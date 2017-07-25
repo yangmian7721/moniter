@@ -1,0 +1,86 @@
+.shadow{
+   -webkit-box-shadow: #666 0px 0px 10px;
+   -moz-box-shadow: #666 0px 0px 10px;
+   box-shadow: #eee 0px 0px 2px;
+   background: #fff;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   -ms-border-radius: 5px;
+   -o-border-radius: 5px;
+   border-radius: 5px;
+   height:100%;
+   text-align:center;
+
+}
+.table_td{
+  width: 50%;
+}
+.table_td_line{
+  width: 50%;
+}
+.table_td_pie{
+  width: 16.6%;
+}
+.table_td_number{
+  width: 16.6%;
+}
+.blur {
+    -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+            filter: blur(10px);
+}
+.shadow_server{
+  -webkit-box-shadow: #28a6e0 0px 0px 3px;
+  -moz-box-shadow: #28a6e0 0px 0px 3px;
+  box-shadow: #28a6e0 0px 0px 3px;
+   background: transparent;
+   -webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+   -ms-border-radius: 3px;
+   -o-border-radius: 3px;
+   border-radius: 3px;
+   height:100%;
+   text-align:center;
+
+
+}
+.hr_server{
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border: 0;
+  border-top: 1px solid #1e5b87;
+}
+
+.breath_light {
+    /*width: 50px;                                    /* 宽度 */
+    /*height: 4px;                                    /* 高度 */
+      /*opacity: 0.1;                                   /* 不透明度 */
+      /*overflow: hidden;                               /* 溢出隐藏 */
+      /*background: #f55;                            /* 背景色 */
+    /*margin: 25% auto;                               /* 外边距 */
+
+    /* IE10、Firefox and Opera，IE9以及更早的版本不支持 */
+    animation-name: breath;                         /* 动画名称 */
+    animation-duration: 3s;                         /* 动画时长3秒 */
+    animation-timing-function: ease-in-out;         /* 动画速度曲线：以低速开始和结束 */
+    animation-iteration-count: infinite;            /* 播放次数：无限 */
+
+    /* Safari and Chrome */
+    -webkit-animation-name: breath;                 /* 动画名称 */
+    -webkit-animation-duration: 3s;                 /* 动画时长3秒 */
+    -webkit-animation-timing-function: ease-in-out; /* 动画速度曲线：以低速开始和结束 */
+    -webkit-animation-iteration-count: infinite;    /* 播放次数：无限 */
+}
+
+@keyframes breath {
+    from { opacity: 0.1; }                          /* 动画开始时的不透明度 */
+    50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
+    to   { opacity: 0.1; }                          /* 动画结束时的不透明度 */
+}
+
+@-webkit-keyframes breath {
+    from { opacity: 0.1; }                          /* 动画开始时的不透明度 */
+    50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
+    to   { opacity: 0.1; }                          /* 动画结束时的不透明度 */
+}

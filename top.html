@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>集团网络状态</title>
+	<script src="https://cdn.bootcss.com/echarts/3.5.3/echarts.min.js"></script>
+</head>
+<body style="background:#323c48;">
+    <div id="main" style="width: 100%;height:600px;margin:0 auto;"></div>
+    <script type="text/javascript">
+		var dom = echarts.init(document.getElementById('main'),'dark');
+		option = {
+			tooltip: {
+				show: true,
+        trigger: 'item'
+			},
+      title: {
+        text: '祈福集团网络运行状态',
+        //subtext: '',
+        //sublink: '',
+        left: 'center',
+        textStyle: {
+            color: '#fff'
+        }
+    },
+			//backgroundColor: 'black',
+			animationDurationUpdate: 10000,
+			animationEasingUpdate: 'quinticInOut',
+			series: [{
+				type: 'graph',
+				hoverAnimation: true,
+				animation: false,
+				layout: 'none',
+				symbolSize: 60,
+				roam: true, //禁止用鼠标滚轮缩小放大效果
+				edgeSymbol: ['circle', 'arrow'],
+				edgeSymbolSize: [5, 10],
+
+				// 连接线上的文字
+				edgeLabel: {
+					normal: {
+						show: true,
+						textStyle: {
+							fontSize: 13
+						}
+					}
+				},
+				lineStyle: {
+					normal: {
+						opacity: 1,
+						width: 2,
+						curveness: 0.2
+					}
+				},
+				// 圆圈内的文字
+				label: {
+					normal: {
+						show: true
+					}
+				},
+				data: [{
+						name: '俱乐部',
+						x: 550,
+						y: 100,
+					}, {
+						name: '海晴居',
+						x: 800,
+						y: 300
+					}, {
+						name: '晋福楼',
+						x: 550,
+						y: 500
+					}, {
+						name: '名都',
+						x: 800,
+						y: 500
+					}, {
+						name: '缤纷世界',
+						x: 300,
+						y: 300
+					}, {
+						name: '集团总部',
+						x: 550,
+						y: 300,
+						symbol: 'roundRect',
+						symbolSize: 70,
+						itemStyle: {
+							normal: {
+								color: 'red'
+							}
+						}
+					}
+
+				],
+				// links: [],
+				links: [{
+					source: '集团总部',
+					target: '俱乐部',
+					value: 12,
+					lineStyle: {
+						normal: {
+							//color: 'red',
+							//type: 'dashed',虚线
+							//curveness: 0.1// 线的弯曲度 0-1之间 越大则歪曲度更大
+						}
+					},
+					label: {
+						normal: {
+							show: true,
+							formatter: '{c}MB',
+							textStyle: {
+								color: '#07ac72'
+							}
+						}
+					}
+				}, {
+					source: '俱乐部',
+					target: '集团总部',
+					//symbolSize: [4, 10] // 箭头大小
+				}, {
+					source: '集团总部',
+					target: '俱乐部'
+				}, {
+					source: '俱乐部',
+					target: '集团总部'
+				}, {
+					source: '集团总部',
+					target: '海晴居'
+				}, {
+					source: '海晴居',
+					target: '集团总部'
+				}, {
+					source: '集团总部',
+					target: '晋福楼'
+
+				}, {
+					source: '晋福楼',
+					target: '集团总部'
+				}, {
+					source: '集团总部',
+					target: '缤纷世界'
+				}, {
+					source: '缤纷世界',
+					target: '集团总部'
+				}]
+			}]
+		};
+        // 使用刚指定的配置项和数据显示图表。
+        dom.setOption(option);
+    </script>
+</body>
+</html>

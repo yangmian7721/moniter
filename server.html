@@ -1,0 +1,598 @@
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <title>网络组服务器大数据</title>
+	    <link rel="stylesheet" type="text/css" href="css/main.css" />
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
+      <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/limonte-sweetalert2/5.2.0/sweetalert2.min.css">
+      <link rel="stylesheet" type="text/css" href="css/jquery.toast.css">
+	    <script src="js/jquery.min.js"></script>
+      <script src="js/iconfont.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="http://cdn.bootcss.com/limonte-sweetalert2/5.2.0/sweetalert2.min.js"></script>
+      <script src="https://cdn.bootcss.com/echarts/3.5.3/echarts.min.js"></script>
+	    <script src="js/jquery.toast.js"></script>
+      <style type="text/css">
+        .icon {
+           width: 2.5em; height: 2.5em;
+           vertical-align: -0.15em;
+           fill: currentColor;
+           overflow: hidden;
+           color: #337ab7;
+        }
+
+        .title{
+          font-size: 24px;
+          color: #337ab7;
+          text-align: center;
+        }
+        .number{
+          font-size: 23px;
+          text-align: center;
+          color: #adf;
+        }
+        h4 {
+          color: #337ab7;
+          font-size: 16px;
+        }
+      </style>
+  </head>
+<body style="background-color:#0f1521;">
+  <div >
+      <table class="table" style="margin-left:auto;	margin-right:auto;">
+        <tr >
+          <td>
+            <div class="row">
+              <div class="col-xs-4"><img src="img/logo.png"> </div>
+              <div class="col-xs-4"><h1 class="title">网络组服务器监控中心<h1></div>
+              <div class="col-xs-4"><h4  style="text-align:right;">v 0.1<h4></div>
+            </div>
+        </tr>
+      </table>
+  </div>
+  <div  id="list1" >
+    <table class="table" style="margin-left:auto;	margin-right:auto;text-align:center;">
+      <tr>
+        <td class="table_td_number">
+          <div class="shadow_server">
+                <div class="panel-content">
+                    <div class="row">
+                        <div class="col-xs-4" style="margin-top: 15px;margin-bottom: 15px;">
+                          <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-Online"></use>
+                          </svg>
+                        </div>
+                        <div class="col-xs-8">
+                            <h4 class="subtitle color-lighter-1">Online</h4>
+                            <hr class="hr_server">
+                            <h1 class="number"><span id="Online"></span></h1>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </td>
+        <td class="table_td_number">
+          <div class="shadow_server">
+                <div class="panel-content">
+                    <div class="row">
+                      <div class="col-xs-4" style="margin-top: 15px;margin-bottom: 15px;">
+                        <svg class="icon" aria-hidden="true">
+                          <use xlink:href="#icon-Connect"></use>
+                        </svg>
+                      </div>
+                        <div class="col-xs-8">
+                            <h4 class="subtitle color-lighter-1">Connects</h4>
+                            <hr class="hr_server">
+                            <h1 class="number"><span id="Connects"></span></h1>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        </td>
+        <td class="table_td_number">
+          <div class="shadow_server">
+                <div class="panel-content">
+                    <div class="row">
+                      <div class="col-xs-4" style="margin-top: 15px;margin-bottom: 15px;">
+                        <svg class="icon" aria-hidden="true">
+                          <use xlink:href="#icon-Bandwidth"></use>
+                        </svg>
+                      </div>
+                        <div class="col-xs-8">
+                            <h4 class="subtitle color-lighter-1">Bandwidth</h4>
+                            <hr class="hr_server">
+                            <h1 class="number"><span id="Bandwidth"></span></h1>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </td>
+        <td class="table_td_number">
+          <div class="shadow_server">
+                <div class="panel-content">
+                    <div class="row">
+                      <div class="col-xs-4" style="margin-top: 15px;margin-bottom: 15px;">
+                        <svg id="squid_load" class="icon load" aria-hidden="true">
+                          <use xlink:href="#icon-Load"></use>
+                        </svg>
+                      </div>
+                        <div class="col-xs-8">
+                            <h4 class="subtitle color-lighter-1"> SquidLoad </h4>
+                            <hr class="hr_server">
+                            <h1 class="number"><span id="Squid_Load"></span></h1>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </td>
+        <td class="table_td_number">
+          <div class="shadow_server">
+                <div class="panel-content">
+                    <div class="row">
+                      <div class="col-xs-4" style="margin-top: 15px;margin-bottom: 15px;">
+                        <svg id="isc_load" class="icon" aria-hidden="true">
+                          <use xlink:href="#icon-Load"></use>
+                        </svg>
+                      </div>
+                        <div class="col-xs-8">
+                            <h4 class="subtitle color-lighter-1"> ISCLoad </h4>
+                            <hr class="hr_server">
+                            <h1 class="number"><span id="ISC_Load"></span></h1>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </td>
+
+        <td class="table_td_number">
+          <div class="shadow_server">
+            <div class="panel-content">
+                <div class="row">
+                  <div class="col-xs-4" style="margin-top: 15px;margin-bottom: 15px;">
+                    <svg id="mysql_load" class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-Load"></use>
+                    </svg>
+                  </div>
+                    <div class="col-xs-8">
+                        <h4 class="subtitle color-lighter-1"> MySqlLoad </h4>
+                        <hr class="hr_server">
+                        <h1 class="number"><span id="MySQL_Load"></span></h1>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+</div>
+<div >
+    <table class="table" style="margin-left:auto;	margin-right:auto;text-align:center;">
+      <tr>
+        <td id="list2"  class="table_td_pie">
+          <div class="shadow_server">
+            <div class="panel-content">
+              <div class="row">
+                <h4 class="subtitle color-lighter-1">Squid_IO</h4>
+                <div id="Squid_IO" style="height:100px;"></div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td class="table_td_pie">
+          <div class="shadow_server">
+            <div class="panel-content">
+              <div class="row">
+                <h4 class="subtitle color-lighter-1">ISC_IO</h4>
+                <div id="ISC_IO" style="height:100px;"></div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td class="table_td_pie">
+          <div class="shadow_server">
+            <div class="panel-content">
+              <div class="row">
+                <h4 class="subtitle color-lighter-1">MySQL_IO</h4>
+                <div id="MySQL_IO" style="height:100px;"></div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td class="table_td_pie">
+          <div class="shadow_server">
+            <div class="panel-content">
+              <div class="row">
+                <h4 class="subtitle color-lighter-1">Squid_RAM</h4>
+                <div id="Squid_RAM" style="height:100px;"></div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td class="table_td_pie">
+          <div class="shadow_server">
+            <div class="panel-content">
+              <div class="row">
+                <h4 class="subtitle color-lighter-1">ISC_RAM</h4>
+                <div id="ISC_RAM" style="height:100px;"> </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td class="table_td_pie">
+          <div class="shadow_server">
+            <div class="panel-content">
+              <div class="row">
+                <h4 class="subtitle color-lighter-1">MySQL_RAM</h4>
+                <div id="MySQL_RAM" style="height:100px;"> </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+</div>
+<div >
+    <table class="table" style="margin-left:auto;	margin-right:auto;text-align:center;">
+      <tr >
+        <td id="net_td" class="table_td_line">
+            <div id="ONLINES" class="shadow_server"> </div>
+        </td>
+        <td  id="tcp_td" class="table_td_line">
+            <div id="TCP" class="shadow_server"> </div>
+        </td>
+      </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+$(function() {
+  //自动适用屏幕尺寸
+  size_auto();
+  window.onresize = function(){
+    size_auto();
+  }
+
+  update();
+  //每30s读取一次数据
+  setInterval(update, 30000);
+
+  //数字动画效果
+  function magic_number(id,value,fix,color,unit) {
+      var num = $('#'+id);
+      var unit_f = '<font size="3">'+unit+'</font>';
+      if (color === true) {
+        document.getElementById(id).style.color = format_color(value / 100);
+        document.getElementById(id.toLowerCase()).style.color = format_color(value / 100);
+      }
+      num.animate({count: value}, {
+          duration: 800,
+          step: function() {
+              num.html(String( ( this.count / 100 ).toFixed(fix) + unit_f ));
+          }
+      });
+  };
+
+  //更新数据操作
+  function update() {
+      $.ajax({
+        url:'lib/data_server.php',
+        type:'post',
+        dataType:'json',
+        beforeSend: function() {
+          //alert('提交数据前');
+        },
+        success:function(datas){
+          magic_number("Online",datas.online * 100, 0, false, '');
+          magic_number("Connects",datas.connects * 100, 0, false, '');
+          magic_number("Bandwidth",datas.bandwidth * 100 /1000000, 1, false, 'M');
+          magic_number("Squid_Load",datas.load.load_squid /4 *100 * 100,0,true, '%');
+          magic_number("ISC_Load",datas.load.load_isc/4 *100 * 100,0,true, '%');
+          magic_number("MySQL_Load",datas.load.load_mysql/4 *100 * 100,0,true, '%');
+
+          draw("ONLINES",datas.onlines);
+          draw("TCP",datas.conn);
+
+          draw_pie("Squid_IO",datas.io.io_squid);
+          draw_pie("ISC_IO",datas.io.io_isc);
+          draw_pie("MySQL_IO",datas.io.io_mysql);
+          draw_pie("Squid_RAM",datas.ram.ram_squid);
+          draw_pie("ISC_RAM",datas.ram.ram_isc);
+          draw_pie("MySQL_RAM",datas.ram.ram_mysql);
+        },
+        error:function(msg) {
+          alert('读取数据出错');
+        }
+      });
+  };
+
+
+  //自动设置尺寸函数
+  function size_auto() {
+    var net_td = document.getElementById('net_td');
+    var tcp_td = document.getElementById('tcp_td');
+    var height = document.body.clientHeight;
+    tcp_td.setAttribute('height',(height-300));
+    net_td.setAttribute('height',(height-300));
+  }
+
+  //百分比返回不同的颜色
+  function format_color(value) {
+    if (0 <= value && value <= 20) {
+        return '#428bca';
+    } else if (value > 20 && value <= 30) {
+      return '#9266f9';
+    }  else if (value > 30 && value <= 40) {
+      return '#16c2c2';
+    }  else if (value > 40 && value <= 50) {
+      return '#49bd2b';
+    } else if (value > 50 && value <= 60) {
+      return '#f1d142';
+    }  else if (value > 60 && value <= 70) {
+      return '#fddf6d';
+    } else if (value > 70 && value <= 80) {
+      return '#ff4402';
+    } else {
+      return '#f00';
+    }
+  }
+
+  //对Y轴数据流量进行格式化
+  function format_of (sizeb) {
+      var size;
+      sizekb = sizeb / 1000;
+      sizemb = sizekb / 1000;
+      sizegb = sizemb / 1000;
+      sizetb = sizegb / 1000;
+      sizepb = sizetb / 1000;
+      if (sizeb > 1) {size = Math.round(sizeb) + "";}
+      if (sizekb > 1) {size = Math.round(sizekb) + "K";}
+      if (sizemb > 1) {size = Math.round(sizemb) + "M";}
+      if (sizegb > 1) {size = Math.round(sizegb) + "G";}
+      if (sizetb > 1) {size = Math.round(sizetb) + "T";}
+      if (sizepb > 1) {size = Math.round(sizepb) + "P";}
+      return size;
+    }
+
+  //画圆
+  function draw_pie(id,percent) {
+    var myecharts = echarts.getInstanceByDom(document.getElementById(id));
+    if (myecharts === undefined) {
+      myecharts = echarts.init(document.getElementById(id));
+    }
+    option = {
+     title: {
+         text: parseInt(percent) + '%',
+         x: 'center',
+         y: 'center',
+         textStyle: {
+             color: format_color(percent/100),
+             fontWeight: 'normal',
+             fontSize: 22,
+         }
+     },
+     series: [{
+             type: 'pie',
+             radius: ['78%', '80%'],
+             silent: true,
+             label: {
+                 normal: {
+                     show: false,
+                 }
+             },
+
+             data: [{
+                 value: 1,
+                 itemStyle: {
+                     normal: {
+                         color: '#adf',
+                         shadowBlur: 10,
+                         shadowColor: '#adf',
+
+
+                     }
+                 }
+             }],
+             animation: false
+         },
+         {
+             name: 'main',
+             type: 'pie',
+             radius: ['78%', '81%'],
+             label: {
+                 normal: {
+                     show: false,
+                 }
+             },
+             data: [{
+                 value: percent,
+                 itemStyle: {
+                     normal: {
+                         color: format_color(percent),
+                         shadowBlur: 10,
+                         shadowColor: format_color(percent)
+                     }
+                 }
+             }, {
+                 value: 100 - percent,
+                 itemStyle: {
+                     normal: {
+                         color: 'transparent'
+                     }
+                 }
+             }],
+
+             animationEasingUpdate: 'cubicInOut',
+             animationDurationUpdate: 500
+         }
+     ]
+    };
+    myecharts.setOption(option);
+  }
+
+  //画折线图
+  function draw(id,datas) {
+    var myecharts = echarts.getInstanceByDom(document.getElementById(id));
+    if (myecharts === undefined) {
+      myecharts = echarts.init(document.getElementById(id));
+    }
+      option = {
+        animation: false,
+        title: {
+            text: datas.title,
+            textStyle: {
+                fontWeight: 'normal',
+                fontSize: 16,
+                color: '#337ab7'
+            },
+            subtext: '近一小时趋势',
+            subtextStyle: {
+                fontWeight: 'normal',
+                fontSize: 12,
+                color: '#337ab7'
+            },
+            left: '4%',
+            top: '2%'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                lineStyle: {
+                    color: '#aaddff'
+                }
+            }
+        },
+        legend: {
+            icon: 'circle',
+            itemWidth: 10,
+            itemHeight: 10,
+            itemGap: 10,
+            data: datas.legend,
+            right: '4%',
+            top: '3%',
+            textStyle: {
+                fontSize: 12,
+                color: '#337ab7'
+            }
+        },
+        grid: {
+            left: '-5%',
+            right: '2%',
+            bottom: '3%',
+            top: '18%',
+            containLabel: true
+        },
+        xAxis: [{
+            type: 'category',
+            boundaryGap: false,
+            axisLine: {
+                lineStyle: {
+                    color: '#337ab7'
+                }
+            },
+            data: datas.data['master']['x']
+        }],
+        yAxis: [{
+            type: 'value',
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#337ab7'
+                }
+            },
+            axisLabel: {
+                margin: 8,
+                textStyle: {
+                    fontSize: 12
+                },
+                formatter: function(value){
+                  return format_of(value);
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#194066'
+                }
+            }
+        }],
+        series: [{
+            name: datas.legend[0],
+            type: 'line',
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 5,
+            showSymbol: false,
+            lineStyle: {
+                normal: {
+                    width: 1
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0, // 0% 处的颜色
+                        color: 'rgba(137, 189, 27, 0.3)'
+                    }, {
+                        offset: 0.8, // 80% 处的颜色
+                        color: 'rgba(137, 189, 27, 0.05)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.2)',
+                    shadowBlur: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgb(137,189,27)',
+                    borderColor: 'rgba(137,189,2,0.3)',
+                    borderWidth: 12
+
+                }
+            },
+            data: datas.data['master']['y']
+        }, {
+            name: datas.legend[1],
+            type: 'line',
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 5,
+            showSymbol: false,
+            lineStyle: {
+                normal: {
+                    width: 1
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(0, 136, 212, 0.3)'
+                    }, {
+                        offset: 0.8,
+                        color: 'rgba(0, 136, 212, 0.05)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.2)',
+                    shadowBlur: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgb(0,136,212)',
+                    borderColor: 'rgba(0,136,212,0.2)',
+                    borderWidth: 12
+
+                }
+            },
+            data: datas.data['standby']['y']
+        }
+      ]
+    };
+    myecharts.setOption(option);
+  }
+});
+
+</script>
+  </body>
+</html>
